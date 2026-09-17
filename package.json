@@ -1,0 +1,9 @@
+{
+  "name": "signal-console",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SIGNAL — a four-agent AI console for evaluating job opportunities.",
+  "engines": {
+    "node": ">=18"
+  }
+}
