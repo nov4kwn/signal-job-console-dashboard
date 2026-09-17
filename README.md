@@ -27,31 +27,6 @@ Each stage is retryable independently if a call fails, and every evaluation is s
 - A small serverless function (`api/agent.js`) proxies model calls to the Anthropic API so the API key stays server-side and is never exposed in the browser.
 - Profile and evaluation history persist in the browser's `localStorage`.
 
-## Deploying on Vercel
-
-1. **Push this repo to GitHub** (if you haven't already).
-2. **Get an Anthropic API key**, if you don't have one: sign up at [console.anthropic.com](https://console.anthropic.com), go to *API Keys*, and create a new key. Anthropic API usage is billed separately from a claude.ai subscription — you'll need to add billing details there.
-3. **Import the repo into Vercel**: go to [vercel.com/new](https://vercel.com/new), sign in with GitHub, and select this repo. No build settings need to change — Vercel auto-detects the static `index.html` and the `api/agent.js` serverless function.
-4. **Add your API key as an environment variable**: in the Vercel project, go to *Settings → Environment Variables*, add `ANTHROPIC_API_KEY` with your key as the value, and save.
-5. **Deploy.** Vercel will give you a live URL (e.g. `signal-console.vercel.app`). Open it, set up your profile, and run an evaluation to confirm the proxy is working end to end.
-
-Any time you push to `main`, Vercel redeploys automatically.
-
-## Local development
-
-Since `index.html` calls a relative `/api/agent` endpoint, opening the file directly in a browser won't reach the serverless function. Use the [Vercel CLI](https://vercel.com/docs/cli) to run both together locally:
-
-```bash
-npm i -g vercel
-vercel dev
-```
-
-Then set `ANTHROPIC_API_KEY` in a local `.env` file (add `.env` to `.gitignore` — never commit real keys).
-
 ## Status
 
 Actively used as a personal tool for my own GRC / AI Governance job search. A full case study on the design and iteration process is available on request.
-
-## Live demo
-
-*(Add your Vercel deployment link here once live.)*
